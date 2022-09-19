@@ -46,6 +46,17 @@ fun getSeats(x:Int,y:Int) { //Function that extracts all seats from 2D array
 
 }
 
+private fun setSeatToRiver(x: Int, y: Int, a: Int, b: Int) {
+    //Assign each seat with its corresponding riverId
+    rivers.forEach {
+        if(it.x == x && it.y == y && it.riverId== -1 )it.riverId = riverId
+    }
+    rivers.forEach {
+        if(it.x == a && it.y == b && it.riverId== -1)it.riverId = riverId
+    }
+}
+
+
 fun checkIfSeatExists(x:Int,y:Int):Boolean{ //If x & y values are assigned to any seat in the river list, then this seat exists
     var existsCheck = false
     rivers.forEach {
