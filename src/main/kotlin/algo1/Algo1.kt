@@ -2,6 +2,7 @@ package algo1
 
 
 var seatId = 0
+var riverId = 0
 val rivers = mutableListOf<Seat>()
 
 val twoDimensionalArray = arrayOf(
