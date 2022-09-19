@@ -55,7 +55,7 @@ fun checkIfSeatExists(x:Int,y:Int):Boolean{
 
 fun checkIfSeatAlreadyProcessed(x:Int,y:Int):Boolean{
     var processedCheck = false
-    rivers.forEach {
+    rivers.forEach { //If riverId different than -1, then a riverId was already assigned to this seat and hence making it processed
         if ( it.x == x && it.y == y && it.riverId != -1) processedCheck = true
     }
     return processedCheck
