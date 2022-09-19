@@ -10,6 +10,18 @@ val twoDimensionalArray = arrayOf(
     arrayOf(1, 1, 0),
     arrayOf(0, 1, 1)
 )
+fun main(){
+
+
+    for (y in twoDimensionalArray[0].indices) for (x in twoDimensionalArray.indices) {
+        getSeats(x= x,y= y)
+    }
+
+    println("So the Result is: $rivers ")
+
+}
+
+
 data class Seat  ( //Each element equal to 1 inside the 2D array will be considered as a Seat for 1 and hence the naming
     var id: Int,
     var x : Int,
