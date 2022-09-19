@@ -45,7 +45,17 @@ fun getSeats(x:Int,y:Int) { //Function that extracts all seats from 2D array
     rivers.add( Seat(seatId, x, y))
 
 }
+private fun operationSetAndCheckForAllDirections(
+    a: Int,
+    b: Int,
+    x: Int,
+    y: Int
+) {
+    if (checkIfSeatExists(a, b) && !checkIfSeatAlreadyProcessed(a,b)) {
 
+        setSeatToRiver(x, y, a, b)
+    }
+}
 private fun setSeatToRiver(x: Int, y: Int, a: Int, b: Int) {
     //Assign each seat with its corresponding riverId
     rivers.forEach {
