@@ -45,6 +45,45 @@ fun getSeats(x:Int,y:Int) { //Function that extracts all seats from 2D array
     rivers.add( Seat(seatId, x, y))
 
 }
+
+
+fun checkFourDirections(x:Int,y:Int){
+    if (!checkIfSeatExists(x,y))return
+    var a = 0
+    var b = 0
+    var i = 0
+    while (i < 4) {
+
+        when ( i) {
+            0 -> {
+                a = x
+                b = y - 1
+                operationSetAndCheckForAllDirections(a, b, x, y)
+            }
+
+            1 -> {
+                a = x - 1
+                b = y
+                operationSetAndCheckForAllDirections(a, b, x, y)
+            }
+
+            2 -> {
+                a = x + 1
+                b = y
+                operationSetAndCheckForAllDirections(a, b, x, y)
+            }
+
+            3 -> {
+                a = x
+                b = y + 1
+                operationSetAndCheckForAllDirections(a, b, x, y)
+            }
+        }
+
+        i++
+    }
+}
+
 private fun operationSetAndCheckForAllDirections(
     a: Int,
     b: Int,
