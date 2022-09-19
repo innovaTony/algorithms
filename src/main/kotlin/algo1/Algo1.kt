@@ -44,3 +44,11 @@ fun getSeats(x:Int,y:Int) { //Function that extracts all seats from 2D array
     rivers.add( Seat(seatId, x, y))
 
 }
+
+fun checkIfSeatExists(x:Int,y:Int):Boolean{
+    var existsCheck = false
+    rivers.forEach {
+        if ( it.x == x && it.y == y) existsCheck = true
+    }
+    return existsCheck
+}
