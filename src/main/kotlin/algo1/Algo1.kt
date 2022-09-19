@@ -93,6 +93,7 @@ private fun operationSetAndCheckForAllDirections(
     if (checkIfSeatExists(a, b) && !checkIfSeatAlreadyProcessed(a,b)) {
 
         setSeatToRiver(x, y, a, b)
+        checkFourDirections(a, b)
     }
 }
 private fun setSeatToRiver(x: Int, y: Int, a: Int, b: Int) {
