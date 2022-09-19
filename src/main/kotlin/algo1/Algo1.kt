@@ -2,6 +2,7 @@ package algo1
 
 
 var seatId = 0
+val rivers = mutableListOf<Seat>()
 
 val twoDimensionalArray = arrayOf(
     arrayOf(1, 0, 1),
@@ -18,4 +19,16 @@ data class Seat  ( //Each element equal to 1 inside the 2D array will be conside
     init {
         seatId++
     }
+}
+
+
+fun getSeats(x:Int,y:Int) { //Function that extracts all seats from 2D array
+
+    twoDimensionalArray.getOrNull(x)?.getOrNull(y) ?: return //If current element out of position then return from function
+    if (twoDimensionalArray[x][y] != 1) {
+        return
+    }  //If current element not equal to 1 then return from function
+
+    rivers.add( Seat(seatId, x, y))
+
 }
