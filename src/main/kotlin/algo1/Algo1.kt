@@ -18,6 +18,14 @@ fun main(){
         getSeats(x= x,y= y)
     }
 
+    rivers.apply {
+        for (i in this){
+//            if any neighbor element add to river and continue
+            checkFourDirections(i.x,i.y)
+            riverId++
+        }
+    }
+
     println("So the Result is: $rivers ")
 
 }
