@@ -1,5 +1,7 @@
 package algo1
 
+//Rivers Algo
+//Inspired from this video:    https://www.youtube.com/watch?v=r4TgqWbKRtA
 
 var seatId = 0
 var riverId = 0
