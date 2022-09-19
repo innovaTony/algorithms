@@ -20,9 +20,8 @@ fun main(){
 
     rivers.apply {
         for (i in this){
-//            if any neighbor element add to river and continue
             checkFourDirections(i.x,i.y)
-            riverId++
+            riverId++ //When the above operation completes, increment the riverId
         }
     }
 
