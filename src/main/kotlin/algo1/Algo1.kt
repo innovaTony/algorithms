@@ -29,6 +29,31 @@ fun main(){
 
     println("So the Result is: $rivers ")
 
+    //The operation below is to organize the presentation of the rivers as asked for by the algorithms authors
+    rivers.apply{
+        val result= mutableMapOf<Int,Int>()
+        this.forEach {
+            if (it.riverId != -1) {
+                if (result[it.riverId]== null) {
+                    result[it.riverId] = 1
+                }else {
+                    val oldValue = result[it.riverId]
+                    result[it.riverId] =  oldValue!! + 1
+                }
+            }
+        }
+
+        //The below will display size of each river as value and the Key will differentiate each river
+        println("Number of seats per river: $result")
+        println("Number of seats per river: ${result.values}")
+
+        //Provide the array the algorithm's authors asked for
+        val resultArray = arrayListOf<Int>()
+        result.values.forEach {
+            resultArray.add(it)
+        }
+        println("Number of seats per river(Resulting Array): $resultArray")
+    }
 }
 
 
@@ -70,7 +95,7 @@ fun checkFourDirections(x:Int,y:Int){
                 operationSetAndCheckForAllDirections(a, b, x, y)
             }
 
-            1 -> {
+            1 -> { //Checking to the left direction
                 a = x - 1
                 b = y
                 operationSetAndCheckForAllDirections(a, b, x, y)
