@@ -3,6 +3,8 @@ package algo1
 //Rivers Algo
 //Inspired from this video:    https://www.youtube.com/watch?v=r4TgqWbKRtA
 
+//You need two or more adjacent 1s in the 2D array to form a river, they need to be positioned horizontally or vertically adjacent (Not diagonal)
+
 var seatId = 0
 var riverId = 0
 val rivers = mutableListOf<Seat>()
@@ -15,11 +17,11 @@ val twoDimensionalArray = arrayOf(
 )
 fun main(){
 
-
+        //Provide the function that will detect Seats with the corresponding nested for loop
     for (y in twoDimensionalArray[0].indices) for (x in twoDimensionalArray.indices) {
         getSeats(x= x,y= y)
     }
-
+        //Start the fetching operation below
     rivers.apply {
         for (i in this){
             checkFourDirections(i.x,i.y)
@@ -27,6 +29,7 @@ fun main(){
         }
     }
 
+    //Below is the list of seats with their corresponding river they are contained in or -1 if they are not part of any river
     println("So the Result is: $rivers ")
 
     //The operation below is to organize the presentation of the rivers as asked for by the algorithms authors
@@ -89,7 +92,7 @@ fun checkFourDirections(x:Int,y:Int){
     while (i < 4) {
 
         when ( i) {
-            0 -> {
+            0 -> { //Checking to the up direction
                 a = x
                 b = y - 1
                 operationSetAndCheckForAllDirections(a, b, x, y)
@@ -101,13 +104,13 @@ fun checkFourDirections(x:Int,y:Int){
                 operationSetAndCheckForAllDirections(a, b, x, y)
             }
 
-            2 -> {
+            2 -> { //Checking to the right direction
                 a = x + 1
                 b = y
                 operationSetAndCheckForAllDirections(a, b, x, y)
             }
 
-            3 -> {
+            3 -> { //Checking to the down direction
                 a = x
                 b = y + 1
                 operationSetAndCheckForAllDirections(a, b, x, y)
