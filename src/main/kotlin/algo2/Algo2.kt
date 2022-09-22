@@ -46,7 +46,7 @@ class LetterRectangleAlgo {
         return  toBeMultiplied
     }
 
-    fun search(x:Int,y:Int,directions : List<Pair<Int,Int>>,word: String, actualLettersToBeFetched: List<String>, comparedItems: Set<String>, prefixes: Set<String> ){
+    fun search(x:Int,y:Int,directions : List<Pair<Int,Int>>,word: String, actualLettersToBeFetched: List<String>, comparedItems: Set<String>, prefixes: Set<String>, position: Pair<Int,Int> = 0 to 0 ){
         if (word !in prefixes ) return
         if (word in comparedItems) println(word)
         for ((dx,dy)in directions){
