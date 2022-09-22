@@ -37,7 +37,14 @@ class LetterRectangleAlgo {
         return value.trimIndent().split(delimeter)
     }
 
-
+    private fun convertDirectionToOpposite(position: Pair<Int,Int>):Pair<Int,Int>{
+        val toBeMultiplied =  if (position.first != 0  ) {
+            position.first * -1 to 0
+        } else {
+            0 to position.second * -1
+        }
+        return  toBeMultiplied
+    }
 
     fun search(x:Int,y:Int,directions : List<Pair<Int,Int>>,word: String, actualLettersToBeFetched: List<String>, comparedItems: Set<String>, prefixes: Set<String> ){
         if (word !in prefixes ) return
