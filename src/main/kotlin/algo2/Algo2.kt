@@ -53,8 +53,9 @@ class LetterRectangleAlgo {
                 val xNew = x + dx
                 val yNew = y + dy
 
-                val letter = actualLettersToBeFetched.getOrNull(yNew)?.getOrNull(xNew) ?: continue // If it goes out of bounds
-                search(xNew, yNew, directions, word + letter, actualLettersToBeFetched, comparedItems, prefixes )
+                val letter =
+                    actualLettersToBeFetched.getOrNull(yNew)?.getOrNull(xNew) ?: continue // If it goes out of bounds
+                search(xNew, yNew, directions, word + letter, actualLettersToBeFetched, comparedItems, prefixes, dx to dy)
             }
 
         }
