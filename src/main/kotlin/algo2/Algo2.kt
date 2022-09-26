@@ -33,8 +33,8 @@ fun main(){
 }
 class LetterRectangleAlgo {
 
-    fun convertStringToListOfStrings(value:String, delimeter:String) : List<String>{
-        return value.trimIndent().split(delimeter)
+    fun convertStringToListOfStrings(value:String, delimiter:String) : List<String>{
+        return value.trimIndent().split(delimiter)
     }
 
     private fun convertDirectionToOpposite(position: Pair<Int,Int>):Pair<Int,Int>{
