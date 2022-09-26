@@ -1,5 +1,6 @@
 package algo2
 
+//Algo Name: Words in letter array
 //Inspired from the youtube video: https://www.youtube.com/watch?v=abkHxIMJGIw
 
 /**
