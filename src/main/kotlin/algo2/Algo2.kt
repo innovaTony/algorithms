@@ -16,6 +16,10 @@ const val rectangleRaw = """
 
 const val dictionaryRaw = "Kotlin, fun, file, line, null"
 val directions = listOf(1 to 0, 0 to 1, -1 to 0, 0 to -1)
+
+val rectangle = LetterRectangleAlgo().convertStringToListOfStrings(rectangleRaw,"\n")
+val dictionary = dictionaryRaw.toUpperCase().split(", ").toSet()
+val isWordUsed = mutableListOf<Int>()
 fun main(){
 
 
