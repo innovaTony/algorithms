@@ -23,7 +23,7 @@ val dictionary = dictionaryRaw.toUpperCase().split(", ").toSet()
 val isWordUsed = mutableListOf<Int>()
 
 
-fun constructList(): MutableList<Int>{
+fun constructList(): MutableList<Int>{ //Form a list dynamically, and set the initial value of each index to 0, which will be reassigned to 1 for used words
     for (i in dictionary){
         isWordUsed.add(0)
     }
@@ -33,6 +33,7 @@ fun constructList(): MutableList<Int>{
 fun main(){
     constructList()
 
+    //Join existing words from the given to a set
     val prefixes =  dictionary.flatMap { word ->
         List(word.length +1){word.take(it)}
     }.toSet()
@@ -49,6 +50,7 @@ class LetterRectangleAlgo {
     }
 
     private fun convertDirectionToOpposite(position: Pair<Int,Int>):Pair<Int,Int>{
+        //Pass the value of the position this is coming from, so we make sure to not get back to same letter
         val toBeMultiplied =  if (position.first != 0  ) {
             position.first * -1 to 0
         } else {
@@ -64,8 +66,8 @@ class LetterRectangleAlgo {
         if (checkIfWordComplete(word,comparedItems= comparedItems)) return
 
 
-            for ((dx, dy) in directions) {
-                if (dx to dy != convertDirectionToOpposite(position)) {
+            for ((dx, dy) in directions) { //Loop 90 degrees
+                if (dx to dy != convertDirectionToOpposite(position)) { //Prevent going to the position this is coming from
 
                 val xNew = x + dx
                 val yNew = y + dy
@@ -78,13 +80,13 @@ class LetterRectangleAlgo {
 
         }
     }
-    private fun setWordUsed(word: String){
+    private fun setWordUsed(word: String){ //Iterate through the list and assign the 1 value for used words, keep 0 otherwise
         dictionary.forEach {
             if (it == word) isWordUsed[dictionary.indexOf(it)] = 1
         }
     }
 
-    private fun isWordUsed(word: String) : Boolean{
+    private fun isWordUsed(word: String) : Boolean{ //Check if word is used
         var check = false
         dictionary.forEach {
             if (it == word) check = isWordUsed[dictionary.indexOf(it)] == 1
@@ -92,7 +94,7 @@ class LetterRectangleAlgo {
         return check
     }
 
-    private fun checkIfWordComplete(
+    private fun checkIfWordComplete( //Here we can check if the letters added form a complete word
         word: String,
         letter: Char? = null,
         comparedItems: Set<String>
@@ -102,7 +104,7 @@ class LetterRectangleAlgo {
         }   else {
             word
         }
-        if (checkedWord in comparedItems && !isWordUsed(checkedWord)) {
+        if (checkedWord in comparedItems && !isWordUsed(checkedWord)) { //Both checks shall conform: word present in current given dictionary, and it shall not be used, so it won't fire several times
             println(checkedWord)
             setWordUsed(checkedWord)
             return true
