@@ -16,6 +16,8 @@ Growing the technical / communicative skills of each individual participating in
 
 **algo1**. River sizes
 
+**algo2**. Words in letter array 
+
 # How to Contribute
 
 You can follow this video: https://www.youtube.com/watch?v=CML6vfKjQss
