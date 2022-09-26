@@ -87,5 +87,23 @@ class LetterRectangleAlgo {
         return check
     }
 
+    private fun checkIfWordComplete(
+        word: String,
+        letter: Char? = null,
+        comparedItems: Set<String>
+    ): Boolean {
+        val checkedWord = if (letter != null){
+            word + letter
+        }   else {
+            word
+        }
+        if (checkedWord in comparedItems && !isWordUsed(checkedWord)) {
+            println(checkedWord)
+            setWordUsed(checkedWord)
+            return true
+        }
+        return false
+    }
+
 
 }
