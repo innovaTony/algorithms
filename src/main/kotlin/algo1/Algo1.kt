@@ -1,6 +1,6 @@
 package algo1
 
-//Rivers Algo
+//Algo Name: River sizes
 //Inspired from this video:    https://www.youtube.com/watch?v=r4TgqWbKRtA
 
 //You need two or more adjacent 1s in the 2D array to form a river, they need to be positioned horizontally or vertically adjacent (Not diagonal)
