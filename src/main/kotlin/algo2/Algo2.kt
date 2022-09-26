@@ -37,7 +37,7 @@ fun main(){
     }.toSet()
 
     for (y in rectangle.indices) for (x in rectangle[0].indices){
-        LetterRectangleAlgo().search(x= x,y= y, directions =  directions, word = rectangle[y][x].toString(), actualLettersToBeFetched = rectangle, comparedItems =  dictionary, prefixes = prefixes)
+        LetterRectangleAlgo().search(x= x,y= y, directions =  directions, word = rectangle[y][x].toString(), actualLettersToBeFetched = rectangle, comparedItems =  dictionary, prefixes = prefixes,1 to 0)
     }
 
 }
