@@ -14,9 +14,9 @@ Growing the technical / communicative skills of each individual participating in
 
 # List of algorithms solved until now:
 
-**algo1**. River sizes
+**Algo 1**. River sizes
 
-**algo2**. Words in letter array 
+**Algo 2**. Words in letter array 
 
 # How to Contribute
 
