@@ -79,5 +79,13 @@ class LetterRectangleAlgo {
         }
     }
 
+    private fun isWordUsed(word: String) : Boolean{
+        var check = false
+        dictionary.forEach {
+            if (it == word) check = isWordUsed[dictionary.indexOf(it)] == 1
+        }
+        return check
+    }
+
 
 }
