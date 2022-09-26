@@ -20,11 +20,17 @@ val directions = listOf(1 to 0, 0 to 1, -1 to 0, 0 to -1)
 val rectangle = LetterRectangleAlgo().convertStringToListOfStrings(rectangleRaw,"\n")
 val dictionary = dictionaryRaw.toUpperCase().split(", ").toSet()
 val isWordUsed = mutableListOf<Int>()
+
+
+fun constructList(): MutableList<Int>{
+    for (i in dictionary){
+        isWordUsed.add(0)
+    }
+    return isWordUsed
+}
+
 fun main(){
-
-
-    val rectangle = LetterRectangleAlgo().convertStringToListOfStrings(rectangleRaw,"\n")
-    val dictionary = dictionaryRaw.toUpperCase().split(", ").toSet()
+    constructList()
 
     val prefixes =  dictionary.flatMap { word ->
         List(word.length +1){word.take(it)}
