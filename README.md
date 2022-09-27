@@ -1,7 +1,7 @@
 # Algorithms - Kotlin version
 Let's solve algorithms together!
 
-As will be stated in my social media 
+As stated in my social media 
 ( www.tiktok.com/@innovatony & www.instagram.com/innovatonyy ) this repo will be
 here as a tank for algorithms solved or in the process of being solved, in addition to testing them.
 
