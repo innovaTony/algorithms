@@ -1,20 +1,29 @@
 package algo1
 
+import algo1.RiversAlgoVariables.riverId
+import algo1.RiversAlgoVariables.rivers
+import algo1.RiversAlgoVariables.seatId
+import algo1.RiversAlgoVariables.twoDimensionalArray
+
 //Algo Name: River sizes
 //Inspired from this video:    https://www.youtube.com/watch?v=r4TgqWbKRtA
 
 //You need two or more adjacent 1s in the 2D array to form a river, they need to be positioned horizontally or vertically adjacent (Not diagonal)
 
-var seatId = 0
-var riverId = 0
-val rivers = mutableListOf<Seat>()
+object RiversAlgoVariables{
+    var seatId = 0
+    var riverId = 0
+    val rivers = mutableListOf<Seat>()
 
-val twoDimensionalArray = arrayOf(
-    arrayOf(1, 0, 1),
-    arrayOf(0, 1, 1),
-    arrayOf(1, 1, 0),
-    arrayOf(0, 1, 1)
-)
+    val twoDimensionalArray = arrayOf(
+        arrayOf(1, 0, 1),
+        arrayOf(0, 1, 1),
+        arrayOf(1, 1, 0),
+        arrayOf(0, 1, 1)
+    )
+}
+
+
 fun main(){
 
         //Provide the function that will detect Seats with the corresponding nested for loop
