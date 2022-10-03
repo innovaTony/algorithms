@@ -8,19 +8,27 @@ The Author states in the end of the vid about a challenge:
         Which is to prevent looping back to the same element you came from
 
 */
+import algo2.LettersAlgo.dictionary
+import algo2.LettersAlgo.directions
+import algo2.LettersAlgo.rectangle
+import algo2.LettersAlgo.isWordUsed
 
-const val rectangleRaw = """
+object LettersAlgo{
+
+    const val rectangleRaw = """
     KOTE
     NULE
     AFIN
 """
 
-const val dictionaryRaw = "Kotlin, fun, file, line, null"
-val directions = listOf(1 to 0, 0 to 1, -1 to 0, 0 to -1)
+    const val dictionaryRaw = "Kotlin, fun, file, line, null"
+    val directions = listOf(1 to 0, 0 to 1, -1 to 0, 0 to -1)
 
-val rectangle = LetterRectangleAlgo().convertStringToListOfStrings(rectangleRaw,"\n")
-val dictionary = dictionaryRaw.toUpperCase().split(", ").toSet()
-val isWordUsed = mutableListOf<Int>()
+    val rectangle = LetterRectangleAlgo().convertStringToListOfStrings(rectangleRaw,"\n")
+    val dictionary = dictionaryRaw.toUpperCase().split(", ").toSet()
+    val isWordUsed = mutableListOf<Int>()
+}
+
 
 
 fun constructList(): MutableList<Int>{ //Form a list dynamically, and set the initial value of each index to 0, which will be reassigned to 1 for used words
