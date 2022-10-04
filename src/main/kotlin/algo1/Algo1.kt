@@ -26,45 +26,68 @@ object RiversAlgoVariables{
 
 fun main(){
 
-        //Provide the function that will detect Seats with the corresponding nested for loop
-    for (y in twoDimensionalArray[0].indices) for (x in twoDimensionalArray.indices) {
-        getSeats(x= x,y= y)
-    }
-        //Start the fetching operation below
-    rivers.apply {
-        for (i in this){
-            checkFourDirections(i.x,i.y)
-            riverId++ //When the above operation completes, increment the riverId
-        }
-    }
+    runRiversAlgo()
+}
+
+ fun runRiversAlgo() {
+    //Provide the function that will detect Seats with the corresponding nested for loop
+    detectSeats()
+
+    //Start the fetching operation below
+    fetchRivers()
 
     //Below is the list of seats with their corresponding river they are contained in or -1 if they are not part of any river
     println("So the Result is: $rivers ")
 
     //The operation below is to organize the presentation of the rivers as asked for by the algorithms authors
-    rivers.apply{
-        val result= mutableMapOf<Int,Int>()
-        this.forEach {
-            if (it.riverId != -1) {
-                if (result[it.riverId]== null) {
-                    result[it.riverId] = 1
-                }else {
-                    val oldValue = result[it.riverId]
-                    result[it.riverId] =  oldValue!! + 1
-                }
-            }
-        }
+    rivers.apply {
+        val result = mutableMap()
 
         //The below will display size of each river as value and the Key will differentiate each river
         println("Number of seats per river: $result")
         println("Number of seats per river: ${result.values}")
 
         //Provide the array the algorithm's authors asked for
-        val resultArray = arrayListOf<Int>()
-        result.values.forEach {
-            resultArray.add(it)
-        }
+        val resultArray = ints(result)
         println("Number of seats per river(Resulting Array): $resultArray")
+    }
+}
+
+private fun MutableList<Seat>.mutableMap(): MutableMap<Int, Int> {
+    val result = mutableMapOf<Int, Int>()
+    this.forEach {
+        if (it.riverId != -1) {
+            if (result[it.riverId] == null) {
+                result[it.riverId] = 1
+            } else {
+                val oldValue = result[it.riverId]
+                result[it.riverId] = oldValue!! + 1
+            }
+        }
+    }
+    return result
+}
+
+private fun ints(result: MutableMap<Int, Int>): ArrayList<Int> {
+    val resultArray = arrayListOf<Int>()
+    result.values.forEach {
+        resultArray.add(it)
+    }
+    return resultArray
+}
+
+private fun fetchRivers() {
+    rivers.apply {
+        for (i in this) {
+            checkFourDirections(i.x, i.y)
+            riverId++ //When the above operation completes, increment the riverId
+        }
+    }
+}
+
+private fun detectSeats() {
+    for (y in twoDimensionalArray[0].indices) for (x in twoDimensionalArray.indices) {
+        getSeats(x = x, y = y)
     }
 }
 
