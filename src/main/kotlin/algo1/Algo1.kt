@@ -3,7 +3,6 @@ package algo1
 import algo1.RiversAlgoVariables.riverId
 import algo1.RiversAlgoVariables.rivers
 import algo1.RiversAlgoVariables.seatId
-import algo1.RiversAlgoVariables.twoDimensionalArray
 
 //Algo Name: River sizes
 //Inspired from this video:    https://www.youtube.com/watch?v=r4TgqWbKRtA
@@ -15,56 +14,83 @@ object RiversAlgoVariables{
     var riverId = 0
     val rivers = mutableListOf<Seat>()
 
+}
+
+
+fun main(){
+
     val twoDimensionalArray = arrayOf(
         arrayOf(1, 0, 1),
         arrayOf(0, 1, 1),
         arrayOf(1, 1, 0),
         arrayOf(0, 1, 1)
     )
+
+    runRiversAlgo(twoDimensionalArray)
 }
 
+ fun runRiversAlgo(twoDimensionalArray: Array<Array<Int>>) : ArrayList<Int> {
+     lateinit var resultArray : ArrayList<Int>
 
-fun main(){
+    //Provide the function that will detect Seats with the corresponding nested for loop
+    detectSeats(twoDimensionalArray)
 
-        //Provide the function that will detect Seats with the corresponding nested for loop
-    for (y in twoDimensionalArray[0].indices) for (x in twoDimensionalArray.indices) {
-        getSeats(x= x,y= y)
-    }
-        //Start the fetching operation below
-    rivers.apply {
-        for (i in this){
-            checkFourDirections(i.x,i.y)
-            riverId++ //When the above operation completes, increment the riverId
-        }
-    }
+    //Start the fetching operation below
+    fetchRivers()
 
     //Below is the list of seats with their corresponding river they are contained in or -1 if they are not part of any river
     println("So the Result is: $rivers ")
 
     //The operation below is to organize the presentation of the rivers as asked for by the algorithms authors
-    rivers.apply{
-        val result= mutableMapOf<Int,Int>()
-        this.forEach {
-            if (it.riverId != -1) {
-                if (result[it.riverId]== null) {
-                    result[it.riverId] = 1
-                }else {
-                    val oldValue = result[it.riverId]
-                    result[it.riverId] =  oldValue!! + 1
-                }
-            }
-        }
+    rivers.apply {
+        val result = mutableMap()
 
         //The below will display size of each river as value and the Key will differentiate each river
         println("Number of seats per river: $result")
         println("Number of seats per river: ${result.values}")
 
         //Provide the array the algorithm's authors asked for
-        val resultArray = arrayListOf<Int>()
-        result.values.forEach {
-            resultArray.add(it)
-        }
+         resultArray = ints(result)
         println("Number of seats per river(Resulting Array): $resultArray")
+    }
+     return resultArray
+}
+
+private fun MutableList<Seat>.mutableMap(): MutableMap<Int, Int> {
+    val result = mutableMapOf<Int, Int>()
+    this.forEach {
+        if (it.riverId != -1) {
+            if (result[it.riverId] == null) {
+                result[it.riverId] = 1
+            } else {
+                val oldValue = result[it.riverId]
+                result[it.riverId] = oldValue!! + 1
+            }
+        }
+    }
+    return result
+}
+
+private fun ints(result: MutableMap<Int, Int>): ArrayList<Int> {
+    val resultArray = arrayListOf<Int>()
+    result.values.forEach {
+        resultArray.add(it)
+    }
+    return resultArray
+}
+
+private fun fetchRivers() {
+    rivers.apply {
+        for (i in this) {
+            checkFourDirections(i.x, i.y)
+            riverId++ //When the above operation completes, increment the riverId
+        }
+    }
+}
+
+private fun detectSeats(twoDimensionalArray: Array<Array<Int>>) {
+    for (y in twoDimensionalArray[0].indices) for (x in twoDimensionalArray.indices) {
+        getSeats(x = x, y = y,twoDimensionalArray)
     }
 }
 
@@ -81,7 +107,7 @@ data class Seat  ( //Each element equal to 1 inside the 2D array will be conside
 }
 
 
-private fun getSeats(x:Int,y:Int) { //Function that extracts all seats from 2D array
+private fun getSeats(x:Int,y:Int,twoDimensionalArray: Array<Array<Int>>) { //Function that extracts all seats from 2D array
 
     twoDimensionalArray.getOrNull(x)?.getOrNull(y) ?: return //If current element out of position then return from function
     if (twoDimensionalArray[x][y] != 1) {
