@@ -9,9 +9,11 @@ The Author states in the end of the vid about a challenge:
 
 */
 import algo2.LettersAlgo.isWordUsed
+import algo2.LettersAlgo.presentWords
 
 object LettersAlgo{
     val isWordUsed = mutableListOf<Int>()
+    val presentWords = mutableListOf<String>()
 }
 
 fun main(){
@@ -136,6 +138,7 @@ class LetterRectangleAlgo {
         }
         if (checkedWord in comparedItems && !isWordUsed(checkedWord,comparedItems)) { //Both checks shall conform: word present in current given dictionary, and it shall not be used, so it won't fire several times
             println(checkedWord)
+            presentWords.add(checkedWord)
             setWordUsed(checkedWord,comparedItems)
             return true
         }
