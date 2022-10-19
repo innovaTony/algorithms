@@ -1,7 +1,8 @@
-package algo2
+package com.innovatony.algo2
 
-import algo2.LettersAlgo.isWordUsed
-import algo2.LettersAlgo.presentWords
+import com.innovatony.algo2.LetterRectangleAlgo
+import com.innovatony.algo2.LettersAlgo.isWordUsed
+import com.innovatony.algo2.LettersAlgo.presentWords
 import org.junit.jupiter.api.Test
 import kotlin.test.BeforeTest
 
