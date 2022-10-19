@@ -1,6 +1,6 @@
-package algo1
+package com.innovatony.algo1
 
-import algo1.RiversAlgoVariables.rivers
+import com.innovatony.algo1.RiversAlgoVariables.rivers
 import org.junit.jupiter.api.Test
 import kotlin.test.BeforeTest
 

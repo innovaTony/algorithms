@@ -1,4 +1,4 @@
-package algo2
+package com.innovatony.algo2
 
 //Algo Name: Words in letter array
 //Inspired from the youtube video: https://www.youtube.com/watch?v=abkHxIMJGIw
@@ -8,8 +8,8 @@ The Author states in the end of the vid about a challenge:
         Which is to prevent looping back to the same element you came from
 
 */
-import algo2.LettersAlgo.isWordUsed
-import algo2.LettersAlgo.presentWords
+import com.innovatony.algo2.LettersAlgo.isWordUsed
+import com.innovatony.algo2.LettersAlgo.presentWords
 
 object LettersAlgo{
     val isWordUsed = mutableListOf<Int>()

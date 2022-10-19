@@ -1,8 +1,8 @@
-package algo1
+package com.innovatony.algo1
 
-import algo1.RiversAlgoVariables.riverId
-import algo1.RiversAlgoVariables.rivers
-import algo1.RiversAlgoVariables.seatId
+import com.innovatony.algo1.RiversAlgoVariables.riverId
+import com.innovatony.algo1.RiversAlgoVariables.rivers
+import com.innovatony.algo1.RiversAlgoVariables.seatId
 
 //Algo Name: River sizes
 //Inspired from this video:    https://www.youtube.com/watch?v=r4TgqWbKRtA
