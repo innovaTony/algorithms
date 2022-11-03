@@ -6,16 +6,16 @@ import com.innovatony.algo2.LettersAlgo.presentWords
 import org.junit.jupiter.api.Test
 import kotlin.test.BeforeTest
 
-class LetterRectangleAlgoTest{
+class LetterRectangleAlgoTest {
 
     @BeforeTest
-    fun `Empty Rivers Before Each test so results won't conflict`(){
+    fun `Empty Rivers Before Each test so results won't conflict`() {
         isWordUsed.clear()
         presentWords.clear()
     }
 
     @Test
-    fun `Check if no word at all in 2D dimension`(){
+    fun `Check if no word at all in 2D dimension`() {
         val rectangleRaw = """
     K1TE
     N1LE
@@ -30,7 +30,7 @@ class LetterRectangleAlgoTest{
     }
 
     @Test
-    fun `Check 2 letters in a dictionary word are in 2D array adjacent diagonally`(){
+    fun `Check 2 letters in a dictionary word are in 2D array adjacent diagonally`() {
         val rectangleRaw = """
     KOT0
     00LN
@@ -42,9 +42,10 @@ class LetterRectangleAlgoTest{
 
         assert(presentWords.size == 0)
     }
+
     //Optional
     @Test
-    fun `Check if decided to add diagonal direction the algorithm still works`(){
+    fun `Check if decided to add diagonal direction the algorithm still works`() {
         val rectangleRaw = """
     KOT0
     00LN
@@ -59,7 +60,7 @@ class LetterRectangleAlgoTest{
     }
 
     @Test
-    fun `Check if a duplicate word would be returned`(){
+    fun `Check if a duplicate word would be returned`() {
         val rectangleRaw = """
     KOT0
     00LN
@@ -73,7 +74,7 @@ class LetterRectangleAlgoTest{
     }
 
     @Test
-    fun `Check if 4 or multiple dictionary words are returned when present in 2D array `(){
+    fun `Check if 4 or multiple dictionary words are returned when present in 2D array `() {
         val rectangleRaw = """
     KOTE
     NULE
@@ -91,7 +92,7 @@ class LetterRectangleAlgoTest{
     }
 
     @Test
-    fun `Check if non adjacent letter would return any word  `(){
+    fun `Check if non adjacent letter would return any word  `() {
         val rectangleRaw = """
     KOT0
     00L0
@@ -107,7 +108,6 @@ class LetterRectangleAlgoTest{
         assert(presentWords.size == 0)
 
     }
-
 
 
 }

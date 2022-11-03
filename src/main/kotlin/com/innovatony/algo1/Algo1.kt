@@ -9,7 +9,7 @@ import com.innovatony.algo1.RiversAlgoVariables.seatId
 
 //You need two or more adjacent 1s in the 2D array to form a river, they need to be positioned horizontally or vertically adjacent (Not diagonal)
 
-object RiversAlgoVariables{
+object RiversAlgoVariables {
     var seatId = 0
     var riverId = 0
     val rivers = mutableListOf<Seat>()
@@ -17,7 +17,7 @@ object RiversAlgoVariables{
 }
 
 
-fun main(){
+fun main() {
 
     val twoDimensionalArray = arrayOf(
         arrayOf(1, 0, 1),
@@ -29,8 +29,8 @@ fun main(){
     runRiversAlgo(twoDimensionalArray)
 }
 
- fun runRiversAlgo(twoDimensionalArray: Array<Array<Int>>) : ArrayList<Int> {
-     lateinit var resultArray : ArrayList<Int>
+fun runRiversAlgo(twoDimensionalArray: Array<Array<Int>>): ArrayList<Int> {
+    lateinit var resultArray: ArrayList<Int>
 
     //Provide the function that will detect Seats with the corresponding nested for loop
     detectSeats(twoDimensionalArray)
@@ -50,10 +50,10 @@ fun main(){
         println("Number of seats per river: ${result.values}")
 
         //Provide the array the algorithm's authors asked for
-         resultArray = ints(result)
+        resultArray = ints(result)
         println("Number of seats per river(Resulting Array): $resultArray")
     }
-     return resultArray
+    return resultArray
 }
 
 private fun MutableList<Seat>.mutableMap(): MutableMap<Int, Int> {
@@ -90,43 +90,48 @@ private fun fetchRivers() {
 
 private fun detectSeats(twoDimensionalArray: Array<Array<Int>>) {
     for (y in twoDimensionalArray[0].indices) for (x in twoDimensionalArray.indices) {
-        getSeats(x = x, y = y,twoDimensionalArray)
+        getSeats(x = x, y = y, twoDimensionalArray)
     }
 }
 
 
-data class Seat  ( //Each element equal to 1 inside the 2D array will be considered as a Seat for 1 and hence the naming
+data class Seat( //Each element equal to 1 inside the 2D array will be considered as a Seat for 1 and hence the naming
     var id: Int,
-    var x : Int,
-    var y : Int,
-    var riverId : Int = -1
-){
+    var x: Int,
+    var y: Int,
+    var riverId: Int = -1
+) {
     init {
         seatId++
     }
 }
 
 
-private fun getSeats(x:Int,y:Int,twoDimensionalArray: Array<Array<Int>>) { //Function that extracts all seats from 2D array
+private fun getSeats(
+    x: Int,
+    y: Int,
+    twoDimensionalArray: Array<Array<Int>>
+) { //Function that extracts all seats from 2D array
 
-    twoDimensionalArray.getOrNull(x)?.getOrNull(y) ?: return //If current element out of position then return from function
+    twoDimensionalArray.getOrNull(x)?.getOrNull(y)
+        ?: return //If current element out of position then return from function
     if (twoDimensionalArray[x][y] != 1) {
         return
     }  //If current element not equal to 1 then return from function
 
-    rivers.add( Seat(seatId, x, y))
+    rivers.add(Seat(seatId, x, y))
 
 }
 
 
-private fun checkFourDirections(x:Int,y:Int){
-    if (!checkIfSeatExists(x,y))return
+private fun checkFourDirections(x: Int, y: Int) {
+    if (!checkIfSeatExists(x, y)) return
     var a = 0
     var b = 0
     var i = 0
     while (i < 4) {
 
-        when ( i) {
+        when (i) {
             0 -> { //Checking to the up direction
                 a = x
                 b = y - 1
@@ -162,35 +167,39 @@ private fun operationSetAndCheckForAllDirections(
     x: Int,
     y: Int
 ) {
-    if (checkIfSeatExists(a, b) && !checkIfSeatAlreadyProcessed(a,b)) {
+    if (checkIfSeatExists(a, b) && !checkIfSeatAlreadyProcessed(a, b)) {
 
         setSeatToRiver(x, y, a, b)
         checkFourDirections(a, b)
     }
 }
+
 private fun setSeatToRiver(x: Int, y: Int, a: Int, b: Int) {
     //Assign each seat with its corresponding riverId
     rivers.forEach {
-        if(it.x == x && it.y == y && it.riverId== -1 )it.riverId = riverId
+        if (it.x == x && it.y == y && it.riverId == -1) it.riverId = riverId
     }
     rivers.forEach {
-        if(it.x == a && it.y == b && it.riverId== -1)it.riverId = riverId
+        if (it.x == a && it.y == b && it.riverId == -1) it.riverId = riverId
     }
 }
 
 
-private fun checkIfSeatExists(x:Int,y:Int):Boolean{ //If x & y values are assigned to any seat in the river list, then this seat exists
+private fun checkIfSeatExists(
+    x: Int,
+    y: Int
+): Boolean { //If x & y values are assigned to any seat in the river list, then this seat exists
     var existsCheck = false
     rivers.forEach {
-        if ( it.x == x && it.y == y) existsCheck = true
+        if (it.x == x && it.y == y) existsCheck = true
     }
     return existsCheck
 }
 
-private fun checkIfSeatAlreadyProcessed(x:Int,y:Int):Boolean{
+private fun checkIfSeatAlreadyProcessed(x: Int, y: Int): Boolean {
     var processedCheck = false
     rivers.forEach { //If riverId different than -1, then a riverId was already assigned to this seat and hence making it processed
-        if ( it.x == x && it.y == y && it.riverId != -1) processedCheck = true
+        if (it.x == x && it.y == y && it.riverId != -1) processedCheck = true
     }
     return processedCheck
 }

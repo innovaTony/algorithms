@@ -5,19 +5,19 @@ package com.innovatony.algo2
 
 /**
 The Author states in the end of the vid about a challenge:
-        Which is to prevent looping back to the same element you came from
+Which is to prevent looping back to the same element you came from
 
-*/
+ */
 import com.innovatony.algo2.LettersAlgo.isWordUsed
 import com.innovatony.algo2.LettersAlgo.presentWords
 
-object LettersAlgo{
+object LettersAlgo {
     val isWordUsed = mutableListOf<Int>()
     val presentWords = mutableListOf<String>()
 }
 
-fun main(){
-     val rectangleRaw = """
+fun main() {
+    val rectangleRaw = """
     KOTE
     NULE
     AFIN
@@ -64,61 +64,77 @@ class LetterRectangleAlgo {
     }
 
 
-
-
-
-
-
-
-    private fun convertStringToListOfStrings(value:String, delimiter:String) : List<String>{
+    private fun convertStringToListOfStrings(value: String, delimiter: String): List<String> {
         return value.trimIndent().split(delimiter)
     }
 
-     private fun constructList(dictionary:Set<String>): MutableList<Int>{ //Form a list dynamically, and set the initial value of each index to 0, which will be reassigned to 1 for used words
-        for (i in dictionary){
+    private fun constructList(dictionary: Set<String>): MutableList<Int> { //Form a list dynamically, and set the initial value of each index to 0, which will be reassigned to 1 for used words
+        for (i in dictionary) {
             isWordUsed.add(0)
         }
         return isWordUsed
     }
 
-    private fun convertDirectionToOpposite(position: Pair<Int,Int>):Pair<Int,Int>{
+    private fun convertDirectionToOpposite(position: Pair<Int, Int>): Pair<Int, Int> {
         //Pass the value of the position this is coming from, so we make sure to not get back to same letter
-        val toBeMultiplied =  if (position.first != 0  ) {
+        val toBeMultiplied = if (position.first != 0) {
             position.first * -1 to 0
         } else {
             0 to position.second * -1
         }
-        return  toBeMultiplied
+        return toBeMultiplied
     }
 
-   private fun search(x:Int,y:Int,directions : List<Pair<Int,Int>>,word: String, actualLettersToBeFetched: List<String>, comparedItems: Set<String>, prefixes: Set<String>, position: Pair<Int,Int> = 0 to 0 ){
+    private fun search(
+        x: Int,
+        y: Int,
+        directions: List<Pair<Int, Int>>,
+        word: String,
+        actualLettersToBeFetched: List<String>,
+        comparedItems: Set<String>,
+        prefixes: Set<String>,
+        position: Pair<Int, Int> = 0 to 0
+    ) {
 
-         if (word !in prefixes ) return
+        if (word !in prefixes) return
 
-        if (checkIfWordComplete(word,comparedItems= comparedItems)) return
+        if (checkIfWordComplete(word, comparedItems = comparedItems)) return
 
 
-            for ((dx, dy) in directions) { //Loop 90 degrees
-                if (dx to dy != convertDirectionToOpposite(position)) { //Prevent going to the position this is coming from
+        for ((dx, dy) in directions) { //Loop 90 degrees
+            if (dx to dy != convertDirectionToOpposite(position)) { //Prevent going to the position this is coming from
 
                 val xNew = x + dx
                 val yNew = y + dy
 
                 val letter =
                     actualLettersToBeFetched.getOrNull(yNew)?.getOrNull(xNew) ?: continue // If it goes out of bounds
-                    if (checkIfWordComplete(word, letter, comparedItems)) return
-                    search(xNew, yNew, directions, word + letter, actualLettersToBeFetched, comparedItems, prefixes, dx to dy)
+                if (checkIfWordComplete(word, letter, comparedItems)) return
+                search(
+                    xNew,
+                    yNew,
+                    directions,
+                    word + letter,
+                    actualLettersToBeFetched,
+                    comparedItems,
+                    prefixes,
+                    dx to dy
+                )
             }
 
         }
     }
-    private fun setWordUsed(word: String,dictionary:Set<String>){ //Iterate through the list and assign the 1 value for used words, keep 0 otherwise
+
+    private fun setWordUsed(
+        word: String,
+        dictionary: Set<String>
+    ) { //Iterate through the list and assign the 1 value for used words, keep 0 otherwise
         dictionary.forEach {
             if (it == word) isWordUsed[dictionary.indexOf(it)] = 1
         }
     }
 
-    private fun isWordUsed(word: String,dictionary:Set<String>) : Boolean{ //Check if word is used
+    private fun isWordUsed(word: String, dictionary: Set<String>): Boolean { //Check if word is used
         var check = false
         dictionary.forEach {
             if (it == word) check = isWordUsed[dictionary.indexOf(it)] == 1
@@ -131,15 +147,19 @@ class LetterRectangleAlgo {
         letter: Char? = null,
         comparedItems: Set<String>
     ): Boolean {
-        val checkedWord = if (letter != null){
+        val checkedWord = if (letter != null) {
             word + letter
-        }   else {
+        } else {
             word
         }
-        if (checkedWord in comparedItems && !isWordUsed(checkedWord,comparedItems)) { //Both checks shall conform: word present in current given dictionary, and it shall not be used, so it won't fire several times
+        if (checkedWord in comparedItems && !isWordUsed(
+                checkedWord,
+                comparedItems
+            )
+        ) { //Both checks shall conform: word present in current given dictionary, and it shall not be used, so it won't fire several times
             println(checkedWord)
             presentWords.add(checkedWord)
-            setWordUsed(checkedWord,comparedItems)
+            setWordUsed(checkedWord, comparedItems)
             return true
         }
         return false
