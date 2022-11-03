@@ -19,7 +19,7 @@ class Algo1KtTest {
             arrayOf(0, 0, 0),
             arrayOf(0, 0, 0)
         )
-        val resultArray = runRiversAlgo(twoDimensionalArray)
+        val resultArray = RiversAlgo().runRiversAlgo(twoDimensionalArray)
         assert(resultArray.size == 0)
     }
 
@@ -31,7 +31,7 @@ class Algo1KtTest {
             arrayOf(1, 1, 1),
             arrayOf(1, 1, 1)
         )
-        val resultArray = runRiversAlgo(twoDimensionalArray)
+        val resultArray = RiversAlgo().runRiversAlgo(twoDimensionalArray)
         assert(resultArray.size == 1 && resultArray[0] == 12)
     }
 
@@ -43,7 +43,7 @@ class Algo1KtTest {
             arrayOf(0, 0, 0),
             arrayOf(0, 0, 0)
         )
-        val resultArray = runRiversAlgo(twoDimensionalArray)
+        val resultArray = RiversAlgo().runRiversAlgo(twoDimensionalArray)
         assert(resultArray.size == 1 && resultArray[0] == 3)
     }
 
@@ -55,7 +55,7 @@ class Algo1KtTest {
             arrayOf(0, 1, 0),
             arrayOf(0, 0, 0)
         )
-        val resultArray = runRiversAlgo(twoDimensionalArray)
+        val resultArray = RiversAlgo().runRiversAlgo(twoDimensionalArray)
         assert(resultArray.size == 1 && resultArray[0] == 3)
     }
 
@@ -67,7 +67,7 @@ class Algo1KtTest {
             arrayOf(1, 0, 1),
             arrayOf(0, 0, 0)
         )
-        val resultArray = runRiversAlgo(twoDimensionalArray)
+        val resultArray = RiversAlgo().runRiversAlgo(twoDimensionalArray)
         assert(resultArray.size == 0)
     }
 
@@ -79,7 +79,7 @@ class Algo1KtTest {
             arrayOf(1, 1, 1),
             arrayOf(1, 0, 0)
         )
-        val resultArray = runRiversAlgo(twoDimensionalArray)
+        val resultArray = RiversAlgo().runRiversAlgo(twoDimensionalArray)
         assert(resultArray.size == 1 && resultArray[0] == 8)
     }
 
@@ -91,7 +91,7 @@ class Algo1KtTest {
             arrayOf(1, 0, 1),
             arrayOf(1, 1, 1)
         )
-        val resultArray = runRiversAlgo(twoDimensionalArray)
+        val resultArray = RiversAlgo().runRiversAlgo(twoDimensionalArray)
         assert(resultArray.size == 2 && resultArray[0] == 3 && resultArray[1] == 5)
     }
 
