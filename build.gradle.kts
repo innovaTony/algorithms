@@ -64,10 +64,11 @@ tasks.jacocoTestCoverageVerification {
                 value = "TOTALCOUNT"
                 maximum = "200".toBigDecimal()
             }
-
-            excludes = listOf(
-                // Insert what you want to exclude here
-            )
+            classDirectories.setFrom(classDirectories.files.map {
+                fileTree(it).matching {
+                    exclude("com/**")
+                }
+            })
         }
     }
 }
